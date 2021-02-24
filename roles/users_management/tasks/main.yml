@@ -1,0 +1,19 @@
+---
+- name: Add users
+  user:
+    name: "{{ item.key }}"
+    password: "{{ item.value.password_hash }}"
+#    update_password: on_create
+    createhome: yes
+    shell: /bin/bash
+    state: present
+    groups: "{{ item.value.groups }}"
+    append: yes
+  with_dict: "{{ ssh_users }}"
+
+- name: Set authorized keys
+  authorized_key:
+    user: "{{ item.key }}"
+    state: present
+    key: "{{ item.value.pub_key }}"
+  with_dict: "{{ ssh_users }}"

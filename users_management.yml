@@ -1,0 +1,7 @@
+---
+- name: Add users and ssh keys
+  hosts: all
+  gather_facts: true
+  roles:
+    - role: users_management
+  become: yes

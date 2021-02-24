@@ -1,0 +1,8 @@
+---
+ssh_users:
+  user_name:
+    groups: "sudo,nginx"
+    password_hash: "$1$I...1" # run: openssl passwd -1
+    pub_key: "ssh-rsa AAAA...pb comment" # ssh pub key in string
+
+
